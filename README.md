@@ -4,11 +4,35 @@ A target turner for ISSF and Service Pistol competitions, using an 8085 CPU.
 
 # purpose
 
+<div>
+<table style="border: 2px solid #cccccc;">
+<tbody>
+<tr>
+<td style="border: 1px solid #cccccc; padding: 6px;"><a href="https://github.com/feilipu/target-turner/blob/master/IMG_1508.JPG" target="_blank"><img src="https://github.com/feilipu/target-turner/blob/master/IMG_1508_small.JPG"/></a></td>
+</tr>
+<tr>
+<th style="border: 1px solid #cccccc; padding: 6px;"><centre>ISSF Target Turner Front Panel<center></th>
+</tr>
+</tbody>
+</table>
+</div>
 
 To manage timing for target setting for ISSF and Service Pistol competitions.
 
 # usage
 
+<div>
+<table style="border: 2px solid #cccccc;">
+<tbody>
+<tr>
+<td style="border: 1px solid #cccccc; padding: 6px;"><a href="https://github.com/feilipu/target-turner/blob/master/IMG_1495.JPG" target="_blank"><img src="https://github.com/feilipu/target-turner/blob/master/IMG_1495_small.JPG"/></a></td>
+</tr>
+<tr>
+<th style="border: 1px solid #cccccc; padding: 6px;"><centre>ISSF Target Turner 8085 PCB<center></th>
+</tr>
+</tbody>
+</table>
+</div>
 
 ```
 8085A A12 goes through 7404 1->2 to 8155 /CE
