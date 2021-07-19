@@ -11,7 +11,13 @@ A target turner for ISSF and Service Pistol competitions, using an 8085 CPU.
 <td style="border: 1px solid #cccccc; padding: 6px;"><a href="https://github.com/feilipu/target-turner/blob/master/IMG_1508.JPG" target="_blank"><img src="https://github.com/feilipu/target-turner/blob/master/IMG_1508_small.JPG"/></a></td>
 </tr>
 <tr>
-<th style="border: 1px solid #cccccc; padding: 6px;"><centre>ISSF Target Turner Front Panel<center></th>
+<th style="border: 1px solid #cccccc; padding: 6px;"><centre>ISSF Target Turner - Front Panel<center></th>
+</tr>
+<tr>
+<td style="border: 1px solid #cccccc; padding: 6px;"><a href="https://github.com/feilipu/target-turner/blob/master/647599520.915332.jpg" target="_blank"><img src="https://github.com/feilipu/target-turner/blob/master/647599520.915332.jpg"/></a></td>
+</tr>
+<tr>
+<th style="border: 1px solid #cccccc; padding: 6px;"><centre>ISSF Target Turner - Instructions for Use<center></th>
 </tr>
 </tbody>
 </table>
@@ -28,7 +34,7 @@ To manage timing for target setting for ISSF and Service Pistol competitions.
 <td style="border: 1px solid #cccccc; padding: 6px;"><a href="https://github.com/feilipu/target-turner/blob/master/IMG_1495.JPG" target="_blank"><img src="https://github.com/feilipu/target-turner/blob/master/IMG_1495_small.JPG"/></a></td>
 </tr>
 <tr>
-<th style="border: 1px solid #cccccc; padding: 6px;"><centre>ISSF Target Turner 8085 PCB<center></th>
+<th style="border: 1px solid #cccccc; padding: 6px;"><centre>ISSF Target Turner - 8085 PCB<center></th>
 </tr>
 </tbody>
 </table>
