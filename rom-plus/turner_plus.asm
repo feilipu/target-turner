@@ -183,7 +183,7 @@ ALIGN $020
     ld      bc,$0028
     call    DELAY           ; DELAY 20
     ld      a,$ff
-    out     ($11),a         ;TURN (set PA)
+    out     ($11),a         ; TURN (set PA)
     halt
     ld      a,$00
     out     ($11),a         ; FACE (clear PA) SCORE
@@ -236,8 +236,8 @@ ALIGN $020
     out     ($11),a         ; TURN (set PA)
     ld      bc,$000e
     call    DELAY           ; DELAY 7
-    ld      a,$00           ;[019e] 3e 00
-    out     ($11),a         ;[01a0] d3 11       FACE (clear PA) FIRE
+    ld      a,$00
+    out     ($11),a         ; FACE (clear PA) FIRE
     ld      bc,$0006
     call    DELAY           ; DELAY 3
     dec     l
