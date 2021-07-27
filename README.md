@@ -57,7 +57,9 @@ RST 6.5           34h
 RST 7.5           3Ch
 
 Interface Port
-                                      IN
+                                CUT
+                                P-DN
+                                IN    IN
  _________________________________________
 | GND | 5V  | IR  | TR  | 5.5 | 6.5 | 7.5 |
 |_____|_____|_____|_____|_____|_____|_____|
@@ -74,6 +76,21 @@ I/O Port
 |_____|_____|_____|_____|_____|_____|_____|
         IN                            OUT
 ```
+
+# modification for serial i/o
+
+<div>
+<table style="border: 2px solid #cccccc;">
+<tbody>
+<tr>
+<td style="border: 1px solid #cccccc; padding: 6px;"><a href="https://github.com/feilipu/target-turner/blob/master/IMG_1527.JPG" target="_blank"><img src="https://github.com/feilipu/target-turner/blob/master/IMG_1527.JPG"/></a></td>
+</tr>
+<tr>
+<th style="border: 1px solid #cccccc; padding: 6px;"><centre>Mezzanine ROM Adapter - Cut RST6.5 Pull-Down - Serial Interface<center></th>
+</tr>
+</tbody>
+</table>
+</div>
 
 # credits
 

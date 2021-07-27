@@ -19,7 +19,9 @@ SECTION code
                             ; RST 7.5           3Ch
 
                             ; Interface Port
-                            ;                                       IN
+                            ;                                 CUT
+                            ;                                 P-DN
+                            ;                                 IN    IN
                             ;  _________________________________________
                             ; | GND | 5V  | IR  | TR  | 5.5 | 6.5 | 7.5 |
                             ; |_____|_____|_____|_____|_____|_____|_____|
@@ -48,39 +50,40 @@ ORG $0000
 .RST_00
     ld      sp,$1100        ; 8155 RAM $1000 to $1100
     ld      a,$19
-    sim                     ; Reset R7.5, Set MSE, and mask R5.5
+    sim                     ; reset R7.5, Set MSE, and mask R5.5
     ld      a,$01
-    out     ($10),a         ; Write $01 to 8155 Command Register -> PA Output / PB Input
+    out     ($10),a         ; write $01 to 8155 Command Register -> PA Output / PB Input
     ld      a,$00
-    out     ($11),a         ; Write $00 to 8155 PA Register -> FACE (clear PA)
-    call    SIGN_ON         ; Write a serial sign on message
-    jp      SELECTOR        ; Hardware (switch) selector
+    out     ($11),a         ; write $00 to 8155 PA Register -> FACE (clear PA)
+    ld      hl,START_MSG    ; load address of message
+    call    PRINT           ; write a serial message
+    jp      SELECTOR        ; hardware (switch) selector
 
 ALIGN $0024
 
 .TRAP
-    jp      RST_00          ; Reboot if Trap occurs
+    jp      RST_00          ; reboot if Trap occurs
 
 ALIGN $002C
 
 .RST_55
-    jp      RST_00          ; Reboot if R5.5 occurs (even though it is masked)
+    jp      RST_00          ; reboot if R5.5 occurs (even though it is masked)
 
 ALIGN $0034
 
 .RST_65
-    jp      COMMAND         ; Use RST 6.5 for serial input or for remote trigger of timed sequence
+    jp      COMMAND         ; use RST 6.5 for serial input or for remote trigger of timed sequence
 
 ALIGN $0038
 
 .RST_70
-    jp      RST_00          ; Reboot and recover from reading empty addresses ($FF)
+    jp      RST_00          ; reboot and recover from reading empty addresses ($FF)
 
 ALIGN $003C
 
 .RST_75
 .GO
-    ei                      ; Read RST 7.5 for local trigger of timed sequence
+    ei                      ; read RST 7.5 for local trigger of timed sequence
     ret
     
 ALIGN $0040
@@ -90,7 +93,7 @@ ALIGN $0040
 ALIGN $0080
 
 .SELECTOR
-    in      a,($12)         ; Read 8155 PB (setting of timer wheel & switches)
+    in      a,($12)         ; read 8155 PB (setting of timer wheel & switches)
     cp      $00             ; and depending on value jump to the right delay.
     jp      Z,STANDARD_10
     cp      $01
@@ -123,7 +126,7 @@ ALIGN $0080
 
 ALIGN $020
 
-.DELAY                      ; Delay based on BC contents (each 500ms)
+.DELAY                      ; delay based on BC contents (each 500ms)
     ld      de,$f420
 .DELAY_LOOP
     dec     de
@@ -449,8 +452,8 @@ ALIGN $020
     out     ($11),a         ; TURN (set PA)
     halt
     ld      bc,$0002
-    call    DELAY           ;[0429] cd 90 00    DELAY 1
-    jp      RAPID_8         ;[042c] c3 00 04
+    call    DELAY           ; DELAY 1
+    jp      RAPID_8
 
 ALIGN $020
 
@@ -533,6 +536,8 @@ ALIGN $100
     and     00100000b       ; check whether R6.5 pin is asserted
     jp      Z,GO            ; if set, check for a character otherwise just GO
 
+    ld      hl,INPUT_MSG    ; load address of input request message
+    call    PRINT           ; write a serial message
     call    CIN             ; read character into C
     call    COUT            ; echo it back as acknowledgement
     ld      a,c
@@ -569,27 +574,19 @@ ALIGN $100
     cp      'V'
     jp      Z,SERVICE_15_65
 
-    ld      bc,$0001        ; 500ms delay if we don't receive a valid character
-    call    DELAY
-
-    rim
-    and     00100000b       ; check whether R6.5 pin is still asserted
-    jp      NZ,COMMAND      ; if so, check for another character
-                            ; otherwise for any other character
-    jp      GO              ; just start programmed sequence
+                            ; we got a character, but it wasn't valid so
+    jp      GO              ; start previously programmed sequence
 
 ALIGN $020
 
-.SIGN_ON
-    ld      hl,MESSAGE      ; load address of message
-.SIGN_ON_LOOP
+.PRINT
     ld      c,(hl)          ; get next character
     xor     a
     or      c               ; check if null (end of string)
     ret     Z
     call    COUT            ; output character in C
     inc     hl              ; next character
-    jp      SIGN_ON_LOOP
+    jp      PRINT
 
 ALIGN $020
 
@@ -673,6 +670,9 @@ ALIGN $100
 .HALFBIT
     DEFW    $0109           ; value for 9600 baud
     
-.MESSAGE
+.INPUT_MSG
+    DEFM    "\nCoF: ", 0
+
+.START_MSG
     DEFM    "\nOPC - Target Turner\n\n", 0
 
