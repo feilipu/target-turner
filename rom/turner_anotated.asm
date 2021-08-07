@@ -221,7 +221,7 @@ ORG 0290h
     ld      a,$ff           ;[02a6] 3e ff
     out     ($11),a         ;[02a8] d3 11       TURN (set PA)
     halt                    ;[02aa] 76
-    ld      a,$ff           ;[02ab] 3e ff
+    ld      a,$ff           ;[02ab] 3e ff       XXX Bug, should be $00 FACE
     out     ($11),a         ;[02ad] d3 11       TURN (set PA) SCORE
     halt                    ;[02af] 76
     ld      bc,$0004        ;[02b0] 01 04 00
