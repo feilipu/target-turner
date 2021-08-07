@@ -141,7 +141,7 @@ ALIGN $020
 
 ALIGN $020
 
-.STANDARD_150_65
+.STANDARD_150_65            ; B
     rim
     and     00100000b       ; check whether R6.5 pin is still asserted
     jp      NZ,STANDARD_150_65  ; if so, wait until it is cleared.
@@ -169,7 +169,7 @@ ALIGN $020
 
 ALIGN $020
 
-.STANDARD_20_65
+.STANDARD_20_65             ; A
     rim
     and     00100000b       ; check whether R6.5 pin is still asserted
     jp      NZ,STANDARD_20_65   ; if so, wait until it is cleared.
@@ -197,7 +197,7 @@ ALIGN $020
 
 ALIGN $020
 
-.STANDARD_10_65
+.STANDARD_10_65             ; @
     rim
     and     00100000b       ; check whether R6.5 pin is still asserted
     jp      NZ,STANDARD_10_65   ; if so, wait until it is cleared.
@@ -225,7 +225,7 @@ ALIGN $020
 
 ALIGN $020
 
-.CENTERFIRE_RAPID_65
+.CENTERFIRE_RAPID_65        ; C
     rim
     and     00100000b       ; check whether R6.5 pin is still asserted
     jp      NZ,CENTERFIRE_RAPID_65  ; if so, wait until it is cleared.
@@ -234,8 +234,8 @@ ALIGN $020
     ei
     halt
     ld      l,$05           ; REPEAT 5x
-    ld      a,$ff
 .CENTERFIRE_LOOP
+    ld      a,$ff
     out     ($11),a         ; TURN (set PA)
     ld      bc,$000e
     call    DELAY           ; DELAY 7
@@ -244,9 +244,6 @@ ALIGN $020
     ld      bc,$0006
     call    DELAY           ; DELAY 3
     dec     l
-    ld      a,$00
-    out     ($11),a         ; FACE (clear PA)
-    cp      l
     jp      NZ,CENTERFIRE_LOOP
     ld      a,$ff
     out     ($11),a         ; TURN (set PA)
@@ -259,7 +256,7 @@ ALIGN $020
 
 ALIGN $020
 
-.SERVICE_165_65
+.SERVICE_165_65             ; P
     rim
     and     00100000b       ; check whether R6.5 pin is still asserted
     jp      NZ,SERVICE_165_65   ; if so, wait until it is cleared.
@@ -278,8 +275,8 @@ ALIGN $020
     ld      a,$ff
     out     ($11),a         ; TURN (set PA)
     halt
-    ld      a,$ff
-    out     ($11),a         ; TURN (set PA) SCORE
+    ld      a,$00
+    out     ($11),a         ; FACE (set PA) SCORE
     halt
     ld      bc,$0004
     call    DELAY           ; DELAY 2
@@ -287,7 +284,7 @@ ALIGN $020
 
 ALIGN $020
 
-.SERVICE_35_65
+.SERVICE_35_65              ; Q
     rim
     and     00100000b       ; check whether R6.5 pin is still asserted
     jp      NZ,SERVICE_35_65    ; if so, wait until it is cleared.
@@ -315,7 +312,7 @@ ALIGN $020
 
 ALIGN $020
 
-.SERVICE_15_65
+.SERVICE_15_65              ; R or V
     rim
     and     00100000b       ; check whether R6.5 pin is still asserted
     jp      NZ,SERVICE_15_65    ; if so, wait until it is cleared.
@@ -343,7 +340,7 @@ ALIGN $020
 
 ALIGN $020
 
-.SERVICE_6_65
+.SERVICE_6_65               ; S
     rim
     and     00100000b       ; check whether R6.5 pin is still asserted
     jp      NZ,SERVICE_6_65 ; if so, wait until it is cleared.
@@ -371,7 +368,7 @@ ALIGN $020
 
 ALIGN $020
 
-.SERVICE_8_65
+.SERVICE_8_65               ; T
     rim
     and     00100000b       ; check whether R6.5 pin is still asserted
     jp      NZ,SERVICE_8_65 ; if so, wait until it is cleared.
@@ -399,7 +396,7 @@ ALIGN $020
 
 ALIGN $020
 
-.SERVICE_4_65
+.SERVICE_4_65               ; U
     rim
     and     00100000b       ; check whether R6.5 pin is still asserted
     jp      NZ,SERVICE_4_65 ; if so, wait until it is cleared.
@@ -427,7 +424,7 @@ ALIGN $020
 
 ALIGN $020
 
-.RAPID_8_65
+.RAPID_8_65                 ; D
     rim
     and     00100000b       ; check whether R6.5 pin is still asserted
     jp      NZ,RAPID_8_65   ; if so, wait until it is cleared.
@@ -457,7 +454,7 @@ ALIGN $020
 
 ALIGN $020
 
-.RAPID_6_65
+.RAPID_6_65                 ; E
     rim
     and     00100000b       ; check whether R6.5 pin is still asserted
     jp      NZ,RAPID_6_65   ; if so, wait until it is cleared.
@@ -488,7 +485,7 @@ ALIGN $020
 
 ALIGN $020
 
-.RAPID_4_65
+.RAPID_4_65                 ; F
     rim
     and     00100000b       ; check whether R6.5 pin is still asserted
     jp      NZ,RAPID_4_65   ; if so, wait until it is cleared.
