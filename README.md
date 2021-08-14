@@ -1,3 +1,8 @@
+# NOTE THAT THIS REPOSITORY IS ARCHIVED.
+
+I've moved development to [GitLab target-turner](https://gitlab.com/feilipu/target-turner), where I'm free to use application appropriate security.
+
+
 # target-turner
 
 A target turner for ISSF and Service Pistol competitions, using an 8085 CPU.
